@@ -1,13 +1,30 @@
-name: Use Secrets
+#name: Use Secrets
+#on: [push]
+#
+#jobs:
+#  build:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Use secret
+#        run: |
+#          echo "Username is ${{ secrets.DB_USER }}"
+#          echo "Password length is ${#DB_PASSWORD}"
+#        env:
+#          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+
+
+name: print variables
+run-name: used variables
 on: [push]
+
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Use secret
+      - name: Use variables
         run: |
-          echo "Username is ${{ secrets.DB_USER }}"
-          echo "Password length is ${#DB_PASSWORD}"
+          echo "Username is ${{ vars.STATE}}"
+#          echo "Password is ${{ vars.ENV_CITY }}"
         env:
-          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_PASSWORD: ${{ vars.STATE }}
